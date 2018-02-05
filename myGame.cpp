@@ -41,7 +41,7 @@ int main(){
 	bool dealerBust = false;
 	int choice = 0;
 	int wins = 0;
-	
+
 	for(int i=0; i<4; i++){
 		for(int q=0; q <13 ; q++){
 			deck[(i*13) + q].card_index = ((i*13) + (q+1));
@@ -408,10 +408,14 @@ int main(){
 				if (playerTotal != 21){
 					playerBank += placeBet;
 					cout<<"Regualar Win! Bank: "<<playerBank<<"\n";
+					wins ++;
+					winRatio = (wins/gameNumber);
 				}
 				else {
 					playerBank += ((1.5)*placeBet);
 					cout<<"BLACKJACK WIN! Bank: "<<playerBank<<"\n";
+					wins ++;
+					winRatio = (wins/gameNumber);
 				}
 			}
 			else if (playerTotal == dealerTotal && !playerBust){
@@ -424,6 +428,8 @@ int main(){
 			else if (dealerBust){
 				playerBank += placeBet;
 				cout<<"YOU WIN!"<<"\n";
+				wins ++;
+				winRatio = (wins/gameNumber);
 			}
 			else {cout<<"YOU * LOSE!"<<"\n";}
 		}
